@@ -38,12 +38,16 @@ def not_fun_facts():
 	x = random.randint(1, 11)
 	if x == 1:
 		str = "According to sciencemag.org, our current chain of food supply is responsible for 26\% of man-made greenhouse gas emissions, or 13.7 billion metric tons per year."
+		# https://science.sciencemag.org/content/360/6392/987
+
 	elif x == 2:
 		str = "By switching to diets that exclude animal products, we could save 3.1 billion hectares of land that would otherwise go toward the raising of livestock, a 76\% decrease in food-related land use."
 
 		# https://science.sciencemag.org/content/360/6392/987
 	elif x == 3:
 		str = "Livestock from farms are fed with harvested foods, processed, transported, refrigerated in retail, and even packaged. All of these steps, including the processes of clearing land to have these farms in the first place, have the potential to release emissions."
+
+		# https://www.visualcapitalist.com/visualising-the-greenhouse-gas-impact-of-each-food/
 
 	elif x == 4:
 		str = "One of the most surefire ways to reduce your dietary carbon footprint is to shift away from animal-based foods and toward plant-based ones! The greenhouse gases emitted by animal-based products are multitudes higher than plant-based ones when it comes to areas like changes in biomass, animal byproducts, and crop production for livestock feed."
