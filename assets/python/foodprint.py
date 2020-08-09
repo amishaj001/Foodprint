@@ -18,20 +18,20 @@ def pctg_check(this_week, last_week):
 	return (this_week - last_week) / last_week * 100
 
 def evaluate_progress(pctg):
-	str = ''
+	s = ''
 	if pctg > 50.0:
-		str = "Oh no! The carbon footprint of your diet this week was" + abs(pctg) + "\% higher than it was last week!" 
+		s = "Oh no! The carbon footprint of your diet this week was " + str(abs(pctg)) + "% higher than it was last week!" 
 	elif pctg > 20.0:
-		str = "Uh oh, the carbon footprint of your diet this week was" + abs(pctg) + "\% higher than it was last week."
-	elif pctg > 0.0: aaaa
-		str = "This week, you lowered your dietary carbon footprint by" + abs(pctg) + "\% compared to last week!"
+		s = "Uh oh, the carbon footprint of your diet this week was " + str(abs(pctg)) + "% higher than it was last week."
+	elif pctg > 0.0: 
+		s = "This week, you lowered your dietary carbon footprint by " + str(abs(pctg)) + "% compared to last week!"
 	elif pctg > -20.0:
-		str = "Good job! This week the carbon footprint was" + abs(pctg) + "\% lower than it was last week. Keep it up!"
+		s = "Good job! This week the carbon footprint was " + str(abs(pctg)) + "% lower than it was last week. Keep it up!"
 	elif pctg > -50.0:
-		str = "Your diet's carbon footprint was" + abs(pctg) + "\% lower than it was last week! Amazing work!"
+		s = "Your diet's carbon footprint was " + str(abs(pctg)) + "% lower than it was last week! Amazing work!"
 	else:
-		str = "Wow! Your dietary carbon footprint was a whole" + abs(pctg) + "\% lower than it was last week! The planet is proud of you, and so are we."
-		return str
+		s = "Wow! Your dietary carbon footprint was a whole " + str(abs(pctg)) + "% lower than it was last week! The planet is proud of you, and so are we."
+	return s
 
 def not_fun_facts():
 	str = ""
@@ -66,9 +66,9 @@ def not_fun_facts():
 		str = ""
 	elif x == 9:
 		str = ""
-	elif x = 10:
+	elif x == 10:
 		str = ""
-	elif x = 11:
+	elif x == 11:
 		str = ""
 	return str
 
