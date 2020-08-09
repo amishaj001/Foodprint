@@ -24,7 +24,7 @@ def main():
 	if input("Is this your first day using Foodprint? (Y/N) ") == "Y":
 		print("For your first day of tracking your dietary carbon footprint, your carbon footpring was approximately " + ghg_sum + "! Try to lower this number tomorrow by making less emission-heavy dietary choices!")
 	else:
-		last_day = float(input("What was your dietary carbon footprint when you previously used Foodprint? "))
+		last_day = float(input("Today your dietary carbon footprint was approximately " + ghg_sum + " kilograms of CO2eq emissions. What was your dietary carbon footprint when you previously used Foodprint? "))
 		print(evaluate_progress(pctg_check(ghg_sum, last_day)))
 	return True
 
