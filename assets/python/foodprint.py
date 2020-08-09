@@ -25,6 +25,8 @@ def pctg_check(this_week, last_week):
 	return (this_week - last_week) / last_week * 100
 
 def evaluate_progress(pctg):
+	# takes in: percentage change between this week and last week
+	# returns: a feedback message
 	s = ''
 	if pctg > 50.0:
 		s = "Oh no! The carbon footprint of your diet this week was " + str(abs(pctg)) + "% higher than it was last week!" 
