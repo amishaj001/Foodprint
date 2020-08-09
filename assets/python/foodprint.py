@@ -57,15 +57,15 @@ def evaluate_progress(pctg):
 	# takes in: percentage change between this day and last day
 	# returns: a feedback message
 	s = ''
-	if pctg > 50.0:
+	if pctg > 15.0:
 		s = "Oh no! The carbon footprint of your diet today was " + str(abs(pctg)) + "% higher than it was last today!" 
-	elif pctg > 20.0:
+	elif pctg > 7.0:
 		s = "Uh oh, the carbon footprint of your diet today was " + str(abs(pctg)) + "% higher than it was last today."
 	elif pctg > 0.0: 
 		s = "Today you lowered your dietary carbon footprint by " + str(abs(pctg)) + "% compared to last today!"
-	elif pctg > -20.0:
+	elif pctg > -7.0:
 		s = "Good job! Today the carbon footprint was " + str(abs(pctg)) + "% lower than it was last today. Keep it up!"
-	elif pctg > -50.0:
+	elif pctg > -15.0:
 		s = "Your diet's carbon footprint from today was " + str(abs(pctg)) + "% lower than it was last time! Amazing work!"
 	else:
 		s = "Wow! Today's dietary carbon footprint was a whole " + str(abs(pctg)) + "% lower than it was last time! The planet is proud of you, and so are we."
