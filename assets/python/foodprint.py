@@ -1,21 +1,27 @@
 
 import random
 
-def filter_food(input_list):		
-	# gets the list of food that the user inputted and makes a dictionary with those foods and their 
+def filter_food(input_list):
+	# takes in list of food that user inputs		
+	# returns the list of food that the user inputted and makes a dictionary with those foods and their respective "kg-of-GHG to kg-of-food-product" ratio
 	new_dict = {}					
 	for i in input_list:
 		new_dict[i] = food_dict[i]
 	return new_dict
 
-def combine_food(eaten_dict, quant_dict):
+def sum_food(eaten_dict, quant_dict): 
+	# takes in: 1) a dictionary (keys: foods that user ate; values: their respective ratios) and 
+			# 	2) another dictionary (keys: foods that user ate; values: their respective quantities consumed)
+	# returns the total GHG emissions (estimate) of the foods consumed by user this week
 	sum = 0
-	for i in eaten_dict.keys():
-		sum += food_dict.get(i, 0) * quant_dict.get(i, 0)
+	for i in eaten_dict.keys(): 
+		sum += food_dict.get(i, 0) * quant_dict.get(i, 0) 
 	return sum
 
 
 def pctg_check(this_week, last_week):
+	# takes in total emissions from this week and last week
+	# returns the percent change between the two weeks
 	return (this_week - last_week) / last_week * 100
 
 def evaluate_progress(pctg):
