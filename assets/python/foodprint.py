@@ -1,9 +1,10 @@
 
 import random
 
-def filter_food(eaten_list):
-	new_dict = {}
-	for i in eaten_list:
+def filter_food(input_list):		
+	# gets the list of food that the user inputted and makes a dictionary with those foods and their 
+	new_dict = {}					
+	for i in input_list:
 		new_dict[i] = food_dict[i]
 	return new_dict
 
@@ -37,11 +38,11 @@ def not_fun_facts():
 	str = ""
 	x = random.randint(1, 11)
 	if x == 1:
-		str = "According to sciencemag.org, our current chain of food supply is responsible for 26\% of man-made greenhouse gas emissions, or 13.7 billion metric tons per year."
+		str = "According to sciencemag.org, our current chain of food supply is responsible for 26% of man-made greenhouse gas emissions, or 13.7 billion metric tons per year."
 		# https://science.sciencemag.org/content/360/6392/987
 
 	elif x == 2:
-		str = "By switching to diets that exclude animal products, we could save 3.1 billion hectares of land that would otherwise go toward the raising of livestock, a 76\% decrease in food-related land use."
+		str = "By switching to diets that exclude animal products, we could save 3.1 billion hectares of land that would otherwise go toward the raising of livestock, a 76% decrease in food-related land use."
 
 		# https://science.sciencemag.org/content/360/6392/987
 	elif x == 3:
