@@ -1,13 +1,20 @@
 
 import random
 
-def filter_food(input_list):
+def filter_foods(input_list):
 	# takes in list of food that user inputs		
 	# returns the list of food that the user inputted and makes a dictionary with those foods and their respective "kg-of-GHG to kg-of-food-product" ratio
 	new_dict = {}					
 	for i in input_list:
 		new_dict[i] = food_dict[i]
 	return new_dict
+
+'''def make_quant_dict(food_quant_dict):
+	# takes in a dictionary (keys: food that user ate; values)
+	new_dict = {}
+	for i in input_list:
+		new_dict[]
+	return new_dict '''
 
 def sum_food(eaten_dict, quant_dict): 
 	# takes in: 1) a dictionary (keys: foods that user ate; values: their respective ratios) and 
