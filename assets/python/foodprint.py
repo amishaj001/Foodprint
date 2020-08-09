@@ -22,9 +22,9 @@ def main():
 	ratio_dict = filter_foods(user_dict.keys())
 	ghg_sum = sum_food(ratio_dict, user_dict)
 	if input("Is this your first day using Foodprint? (Y/N) ") == "Y":
-		print("For your first day of tracking your dietary carbon footprint, your carbon footpring was approximately " + round(str(ghg_sum), 3) + "! Try to lower this number tomorrow by making less emission-heavy dietary choices!")
+		print("For your first day of tracking your dietary carbon footprint, your carbon footpring was approximately " + str(round(ghg_sum, 3)) + "! Try to lower this number tomorrow by making less emission-heavy dietary choices!")
 	else:
-		last_day = float(input("Today your dietary carbon footprint was approximately " + round(str(ghg_sum), 3) + " kilograms of CO2eq emissions. What was your dietary carbon footprint (in kilograms) when you previously used Foodprint? "))
+		last_day = float(input("Today your dietary carbon footprint was approximately " + str(round(ghg_sum, 3)) + " kilograms of CO2eq emissions. What was your dietary carbon footprint (in kilograms) when you previously used Foodprint? "))
 		print(evaluate_progress(pctg_check(ghg_sum, last_day)))
 	return True
 
