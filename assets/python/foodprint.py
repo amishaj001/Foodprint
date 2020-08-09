@@ -6,22 +6,21 @@ def main():
 	user_dict = {}
 	while stillEntering:
 		key = input("What did you eat today? ")
-		value = int(input("How much of it did you eat? "))
+		value = int(input("How much of it did you eat (in grams)? ")) * 0.001
 		user_dict[key] = value
 
-		if input("Would you like to keep adding entries? (Yes/No) ") == "Yes":
+		if input("Would you like to keep adding entries? (Y/N) ") == "Y":
 			stillEntering = True
 		else:
 			stillEntering = False
 	ratio_dict = filter_foods(user_dict.keys())
 	ghg_sum = sum_food(ratio_dict, user_dict)
-	if input("Is this your first week using Foodprint? (Yes/No) ") == "Yes":
-		print("For your first week of tracking your dietary carbon footprint, your carbon footpring was approximately " + ghg_sum + "! Try to lower this number this week by etc etc etc ")
+	if input("Is this your first day using Foodprint? (Y/N) ") == "Y":
+		print("For your first day of tracking your dietary carbon footprint, your carbon footpring was approximately " + ghg_sum + "! Try to lower this number tomorrow by making less emission-heavy dietary choices!")
 	else:
-		last_week = float(input("What was your dietary carbon footprint last week? "))
-		print(evaluate_progress(pctg_check(ghg_sum, last_week)))
+		last_day = float(input("What was your dietary carbon footprint when you previously used Foodprint? "))
+		print(evaluate_progress(pctg_check(ghg_sum, last_day)))
 	return True
-
 
 
 def filter_foods(input_list):
@@ -42,74 +41,35 @@ def filter_foods(input_list):
 def sum_food(eaten_dict, quant_dict): 
 	# takes in: 1) a dictionary (keys: foods that user ate; values: their respective ratios) and 
 			# 	2) another dictionary (keys: foods that user ate; values: their respective quantities consumed)
-	# returns the total GHG emissions (estimate) of the foods consumed by user this week
+	# returns the total GHG emissions (estimate) of the foods consumed by user this day
 	sum = 0
 	for i in eaten_dict.keys(): 
 		sum += food_dict.get(i, 0) * quant_dict.get(i, 0) 
 	return sum
 
 
-def pctg_check(this_week, last_week):
-	# takes in total emissions from this week and last week
-	# returns the percent change between the two weeks
-	return (this_week - last_week) / last_week * 100
+def pctg_check(this_day, last_day):
+	# takes in total emissions from this day and last day
+	# returns the percent change between the two days
+	return (this_day - last_day) / last_day * 100
 
 def evaluate_progress(pctg):
-	# takes in: percentage change between this week and last week
+	# takes in: percentage change between this day and last day
 	# returns: a feedback message
 	s = ''
 	if pctg > 50.0:
-		s = "Oh no! The carbon footprint of your diet this week was " + str(abs(pctg)) + "% higher than it was last week!" 
+		s = "Oh no! The carbon footprint of your diet today was " + str(abs(pctg)) + "% higher than it was last today!" 
 	elif pctg > 20.0:
-		s = "Uh oh, the carbon footprint of your diet this week was " + str(abs(pctg)) + "% higher than it was last week."
+		s = "Uh oh, the carbon footprint of your diet today was " + str(abs(pctg)) + "% higher than it was last today."
 	elif pctg > 0.0: 
-		s = "This week, you lowered your dietary carbon footprint by " + str(abs(pctg)) + "% compared to last week!"
+		s = "Today you lowered your dietary carbon footprint by " + str(abs(pctg)) + "% compared to last today!"
 	elif pctg > -20.0:
-		s = "Good job! This week the carbon footprint was " + str(abs(pctg)) + "% lower than it was last week. Keep it up!"
+		s = "Good job! Today the carbon footprint was " + str(abs(pctg)) + "% lower than it was last today. Keep it up!"
 	elif pctg > -50.0:
-		s = "Your diet's carbon footprint was " + str(abs(pctg)) + "% lower than it was last week! Amazing work!"
+		s = "Your diet's carbon footprint from today was " + str(abs(pctg)) + "% lower than it was last time! Amazing work!"
 	else:
-		s = "Wow! Your dietary carbon footprint was a whole " + str(abs(pctg)) + "% lower than it was last week! The planet is proud of you, and so are we."
+		s = "Wow! Today's dietary carbon footprint was a whole " + str(abs(pctg)) + "% lower than it was last time! The planet is proud of you, and so are we."
 	return s
-
-def not_fun_facts():
-	str = ""
-	x = random.randint(1, 11)
-	if x == 1:
-		str = "According to sciencemag.org, our current chain of food supply is responsible for 26% of man-made greenhouse gas emissions, or 13.7 billion metric tons per year."
-		# https://science.sciencemag.org/content/360/6392/987
-
-	elif x == 2:
-		str = "By switching to diets that exclude animal products, we could save 3.1 billion hectares of land that would otherwise go toward the raising of livestock, a 76% decrease in food-related land use."
-
-		# https://science.sciencemag.org/content/360/6392/987
-	elif x == 3:
-		str = "Livestock from farms are fed with harvested foods, processed, transported, refrigerated in retail, and even packaged. All of these steps, including the processes of clearing land to have these farms in the first place, have the potential to release emissions."
-
-		# https://www.visualcapitalist.com/visualising-the-greenhouse-gas-impact-of-each-food/
-
-	elif x == 4:
-		str = "One of the most surefire ways to reduce your dietary carbon footprint is to shift away from animal-based foods and toward plant-based ones! The greenhouse gases emitted by animal-based products are multitudes higher than plant-based ones when it comes to areas like changes in biomass, animal byproducts, and crop production for livestock feed."
-
-		# https://ourworldindata.org/food-choice-vs-eating-local
-
-	elif x == 5:
-		str = "According to Our World in Data, one rather obscure way to reduce your dietary carbon footprint is to avoid purchasing air-freighted food products. These products can be responsible for 50 times more CO2eq emissions than their boat-transported counterparts."
-
-		# https://ourworldindata.org/food-choice-vs-eating-local
-	elif x == 6:
-		str = ""
-	elif x == 7:
-		str = ""
-	elif x == 8:
-		str = ""
-	elif x == 9:
-		str = ""
-	elif x == 10:
-		str = ""
-	elif x == 11:
-		str = ""
-	return str
 
 
 test_list = {	'Cheese', 'Pig Meat', 'Groundnuts'}
@@ -143,6 +103,8 @@ food_dict = {	'Beef (beef herd)': 60,
 				'Apples': 0.4,
 				'Citrus Fruits': 0.3,
 				'Nuts': 0.3			}
+
+main()
 
 
 
