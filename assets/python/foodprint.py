@@ -9,8 +9,8 @@ def filter_food(eaten_list):
 
 def combine_food(eaten_dict, quant_dict):
 	sum = 0
-	for i in dict.keys():
-		sum += eaten_dict.get(i, 0) * quant_dict.get(i, 0)
+	for i in eaten_dict.keys():
+		sum += food_dict.get(i, 0) * quant_dict.get(i, 0)
 	return sum
 
 
@@ -73,7 +73,7 @@ def not_fun_facts():
 	return str
 
 
-
+test_list = {	'Cheese', 'Pig Meat', 'Groundnuts'}
 
 food_dict = {	'Beef (beef herd)': 60, 
 				'Lamb and Mutton': 24,
