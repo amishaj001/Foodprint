@@ -6,7 +6,13 @@ def main():
 	user_dict = {}
 	while stillEntering:
 		key = input("What did you eat today? ")
-		value = int(input("How much of it did you eat (in grams)? ")) * 0.001
+		if not key.lower() in [x.lower() for x in food_dict.keys()]:
+			valid = False
+			while not valid:
+				key = input("Food not valid. What did you eat today? ")
+				if key.lower() in [x.lower() for x in food_dict.keys()]:
+					valid = True
+		value = float(input("How much of it did you eat (in grams)? ")) * 0.001
 		user_dict[key] = value
 
 		if input("Would you like to keep adding entries? (Y/N) ") == "Y":
@@ -57,18 +63,19 @@ def evaluate_progress(pctg):
 	# takes in: percentage change between this day and last day
 	# returns: a feedback message
 	s = ''
+	pct = round(abs(pctg), 3)
 	if pctg > 15.0:
-		s = "Oh no! The carbon footprint of your diet today was " + str(abs(pctg)) + "% higher than it was last today!" 
+		s = "Oh no! The carbon footprint of your diet today was " + str(pct) + "% higher than it was last today!" 
 	elif pctg > 7.0:
-		s = "Uh oh, the carbon footprint of your diet today was " + str(abs(pctg)) + "% higher than it was last today."
+		s = "Uh oh, the carbon footprint of your diet today was " + str(pct) + "% higher than it was last today."
 	elif pctg > 0.0: 
-		s = "Today you lowered your dietary carbon footprint by " + str(abs(pctg)) + "% compared to last today!"
+		s = "Today you lowered your dietary carbon footprint by " + str(pct) + "% compared to last today!"
 	elif pctg > -7.0:
-		s = "Good job! Today the carbon footprint was " + str(abs(pctg)) + "% lower than it was last today. Keep it up!"
+		s = "Good job! Today the carbon footprint was " + str(pct) + "% lower than it was last today. Keep it up!"
 	elif pctg > -15.0:
-		s = "Your diet's carbon footprint from today was " + str(abs(pctg)) + "% lower than it was last time! Amazing work!"
+		s = "Your diet's carbon footprint from today was " + str(pct) + "% lower than it was last time! Amazing work!"
 	else:
-		s = "Wow! Today's dietary carbon footprint was a whole " + str(abs(pctg)) + "% lower than it was last time! The planet is proud of you, and so are we."
+		s = "Wow! Today's dietary carbon footprint was a whole " + str(pct) + "% lower than it was last time! The planet is proud of you, and so are we."
 	return s
 
 
