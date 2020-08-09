@@ -1,49 +1,69 @@
 
 import random
 
-def filter_food(eaten_list):
-	new_dict = {}
-	for i in eaten_list:
+def filter_foods(input_list):
+	# takes in list of food that user inputs		
+	# returns the list of food that the user inputted and makes a dictionary with those foods and their respective "kg-of-GHG to kg-of-food-product" ratio
+	new_dict = {}					
+	for i in input_list:
 		new_dict[i] = food_dict[i]
 	return new_dict
 
-def combine_food(eaten_dict, quant_dict):
+'''def make_quant_dict(food_quant_dict):
+	# takes in a dictionary (keys: food that user ate; values)
+	new_dict = {}
+	for i in input_list:
+		new_dict[]
+	return new_dict '''
+
+def sum_food(eaten_dict, quant_dict): 
+	# takes in: 1) a dictionary (keys: foods that user ate; values: their respective ratios) and 
+			# 	2) another dictionary (keys: foods that user ate; values: their respective quantities consumed)
+	# returns the total GHG emissions (estimate) of the foods consumed by user this week
 	sum = 0
-	for i in dict.keys():
-		sum += eaten_dict.get(i, 0) * quant_dict.get(i, 0)
+	for i in eaten_dict.keys(): 
+		sum += food_dict.get(i, 0) * quant_dict.get(i, 0) 
 	return sum
 
 
 def pctg_check(this_week, last_week):
+	# takes in total emissions from this week and last week
+	# returns the percent change between the two weeks
 	return (this_week - last_week) / last_week * 100
 
 def evaluate_progress(pctg):
-	str = ''
+	# takes in: percentage change between this week and last week
+	# returns: a feedback message
+	s = ''
 	if pctg > 50.0:
-		str = "Oh no! The carbon footprint of your diet this week was" + abs(pctg) + "\% higher than it was last week!" 
+		s = "Oh no! The carbon footprint of your diet this week was " + str(abs(pctg)) + "% higher than it was last week!" 
 	elif pctg > 20.0:
-		str = "Uh oh, the carbon footprint of your diet this week was" + abs(pctg) + "\% higher than it was last week."
-	elif pctg > 0.0: aaaa
-		str = "This week, you lowered your dietary carbon footprint by" + abs(pctg) + "\% compared to last week!"
+		s = "Uh oh, the carbon footprint of your diet this week was " + str(abs(pctg)) + "% higher than it was last week."
+	elif pctg > 0.0: 
+		s = "This week, you lowered your dietary carbon footprint by " + str(abs(pctg)) + "% compared to last week!"
 	elif pctg > -20.0:
-		str = "Good job! This week the carbon footprint was" + abs(pctg) + "\% lower than it was last week. Keep it up!"
+		s = "Good job! This week the carbon footprint was " + str(abs(pctg)) + "% lower than it was last week. Keep it up!"
 	elif pctg > -50.0:
-		str = "Your diet's carbon footprint was" + abs(pctg) + "\% lower than it was last week! Amazing work!"
+		s = "Your diet's carbon footprint was " + str(abs(pctg)) + "% lower than it was last week! Amazing work!"
 	else:
-		str = "Wow! Your dietary carbon footprint was a whole" + abs(pctg) + "\% lower than it was last week! The planet is proud of you, and so are we."
-		return str
+		s = "Wow! Your dietary carbon footprint was a whole " + str(abs(pctg)) + "% lower than it was last week! The planet is proud of you, and so are we."
+	return s
 
 def not_fun_facts():
 	str = ""
 	x = random.randint(1, 11)
 	if x == 1:
-		str = "According to sciencemag.org, our current chain of food supply is responsible for 26\% of man-made greenhouse gas emissions, or 13.7 billion metric tons per year."
+		str = "According to sciencemag.org, our current chain of food supply is responsible for 26% of man-made greenhouse gas emissions, or 13.7 billion metric tons per year."
+		# https://science.sciencemag.org/content/360/6392/987
+
 	elif x == 2:
-		str = "By switching to diets that exclude animal products, we could save 3.1 billion hectares of land that would otherwise go toward the raising of livestock, a 76\% decrease in food-related land use."
+		str = "By switching to diets that exclude animal products, we could save 3.1 billion hectares of land that would otherwise go toward the raising of livestock, a 76% decrease in food-related land use."
 
 		# https://science.sciencemag.org/content/360/6392/987
 	elif x == 3:
 		str = "Livestock from farms are fed with harvested foods, processed, transported, refrigerated in retail, and even packaged. All of these steps, including the processes of clearing land to have these farms in the first place, have the potential to release emissions."
+
+		# https://www.visualcapitalist.com/visualising-the-greenhouse-gas-impact-of-each-food/
 
 	elif x == 4:
 		str = "One of the most surefire ways to reduce your dietary carbon footprint is to shift away from animal-based foods and toward plant-based ones! The greenhouse gases emitted by animal-based products are multitudes higher than plant-based ones when it comes to areas like changes in biomass, animal byproducts, and crop production for livestock feed."
@@ -62,14 +82,14 @@ def not_fun_facts():
 		str = ""
 	elif x == 9:
 		str = ""
-	elif x = 10:
+	elif x == 10:
 		str = ""
-	elif x = 11:
+	elif x == 11:
 		str = ""
 	return str
 
 
-
+test_list = {	'Cheese', 'Pig Meat', 'Groundnuts'}
 
 food_dict = {	'Beef (beef herd)': 60, 
 				'Lamb and Mutton': 24,
