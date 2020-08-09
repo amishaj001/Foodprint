@@ -1,6 +1,29 @@
 
 import random
 
+def main():
+	stillEntering = True
+	user_dict = {}
+	while stillEntering:
+		key = input("What did you eat today? ")
+		value = int(input("How much of it did you eat? "))
+		user_dict[key] = value
+
+		if input("Would you like to keep adding entries? (Yes/No) ") == "Yes":
+			stillEntering = True
+		else:
+			stillEntering = False
+	ratio_dict = filter_foods(user_dict.keys())
+	ghg_sum = sum_food(ratio_dict, user_dict)
+	if input("Is this your first week using Foodprint? (Yes/No) ") == "Yes":
+		print("For your first week of tracking your dietary carbon footprint, your carbon footpring was approximately " + ghg_sum + "! Try to lower this number this week by etc etc etc ")
+	else:
+		last_week = float(input("What was your dietary carbon footprint last week? "))
+		print(evaluate_progress(pctg_check(ghg_sum, last_week)))
+	return True
+
+
+
 def filter_foods(input_list):
 	# takes in list of food that user inputs		
 	# returns the list of food that the user inputted and makes a dictionary with those foods and their respective "kg-of-GHG to kg-of-food-product" ratio
